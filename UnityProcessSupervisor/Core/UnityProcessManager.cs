@@ -79,10 +79,14 @@ namespace UnityProcessSupervisor {
                     if (lockers.Count > 0) {
                         foreach (var locker in lockers) {
                             if (locker.ProcessName == "Unity") {
-                                UnityProcessInfos.Add(new UnityProcessInfo() {
+                                var processInfo = new UnityProcessInfo() {
                                     project = projectInfo,
                                     process = lockers[0]
-                                });
+                                };
+                                if (processInfo.process.Responding == false) {
+                                    processInfo.project.projectName += "(未响应)";
+                                }
+                                UnityProcessInfos.Add(processInfo);
                                 break;
                             }
                         }

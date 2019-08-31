@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UnityProcessSupervisor;
 
 namespace UnityProcessSupervisor {
-    public class UnityProjectInfo {
+    public struct UnityProjectInfo {
         public string projectName;
         public string projectPath;
     }

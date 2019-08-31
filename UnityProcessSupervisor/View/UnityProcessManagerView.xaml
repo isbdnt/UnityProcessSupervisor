@@ -1,0 +1,26 @@
+﻿<Window x:Class="UnityProcessSupervisor.View.UnityProcessManagerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnityProcessSupervisor.View"
+        mc:Ignorable="d"
+        Title="Unity进程监视器" Height="220" Width="450">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="processList" Background="LightGray">
+            <Grid.RowDefinitions>
+                <!--<RowDefinition Height="110"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="110"/>-->
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="{x:Type local:UnityProcessView}">
+                    <Setter Property="Margin" Value="0,1,0,0"/>
+                </Style>
+            </Grid.Resources>
+            <!--<local:UnityProcessView Grid.Row="0"/>
+            <local:UnityProcessView Grid.Row="1" />
+            <local:UnityProcessView Grid.Row="2"/>-->
+        </Grid>
+    </ScrollViewer>
+</Window>

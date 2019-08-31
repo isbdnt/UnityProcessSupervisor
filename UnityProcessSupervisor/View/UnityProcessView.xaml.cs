@@ -1,22 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace UnityProcessSupervisor.View {
+    /// <summary>
+    /// Interaction logic for UnityProcessView.xaml
+    /// </summary>
     public partial class UnityProcessView : UserControl {
-        public event EventHandler<UnityProcessInfo> onRestart = delegate { };
-        public event EventHandler<UnityProcessInfo> onClose = delegate { };
+        public EventHandler<UnityProcessInfo> onRestart = delegate { };
+        public EventHandler<UnityProcessInfo> onClose = delegate { };
 
         public UnityProcessView() {
             InitializeComponent();
+            this.restart = (Button)this.FindName("restart");
             this.restart.Click += HandleRestartClick;
+
+            this.close = (Button)this.FindName("close");
             this.close.Click += HandleCloseClick;
+
+            this.projectName = (TextBlock)this.FindName("projectName");
+            this.projectPath = (TextBlock)this.FindName("projectPath");
         }
 
         void HandleRestartClick(object sender, EventArgs e) {

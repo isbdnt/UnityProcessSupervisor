@@ -45,6 +45,7 @@
                 </StackPanel.Resources>
                 <Button x:Name="restart" Content="重启"/>
                 <Button x:Name="close" Content="关闭"/>
+                <Button x:Name="select" Content="选中"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using UnityProcessSupervisor;
@@ -11,6 +12,10 @@ using UnityProcessSupervisor;
 namespace UnityProcessSupervisor {
     public class UnityProcessManager {
         static readonly ProcessStartInfo UNITY_PROCESS_START_INFO = new ProcessStartInfo();
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        static readonly int SW_RESTORE = 9;
+        static readonly int SW_MAXIMIZED = 3;
         public List<UnityProjectInfo> UnityProjectInfos { get; } = new List<UnityProjectInfo>();
         public List<UnityProcessInfo> UnityProcessInfos { get; } = new List<UnityProcessInfo>();
 
@@ -108,6 +113,11 @@ namespace UnityProcessSupervisor {
             if (UnityProcessInfos.Remove(unityProcessInfo)) {
                 unityProcessInfo.process.Kill();
             }
+        }
+
+        public void SelectUnityProcess(UnityProcessInfo unityProcessInfo) {
+            ShowWindow(unityProcessInfo.process.MainWindowHandle, SW_RESTORE);
+            ShowWindow(unityProcessInfo.process.MainWindowHandle, SW_MAXIMIZED);
         }
     }
 

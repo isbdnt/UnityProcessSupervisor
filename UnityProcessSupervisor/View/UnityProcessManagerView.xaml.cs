@@ -55,6 +55,7 @@ namespace UnityProcessSupervisor.View {
                 view.ProcessInfo = this.manager.UnityProcessInfos[i];
                 view.onRestart = HandleProcessRestart;
                 view.onClose = HandleProcessClose;
+                view.onSelect = HandleProcessSelect;
             }
         }
 
@@ -64,11 +65,16 @@ namespace UnityProcessSupervisor.View {
                 this.UpdateListView();
             }
         }
+
         void HandleProcessClose(object sender, UnityProcessInfo unityProcessInfo) {
             lock (this.manager.UnityProcessInfos) {
                 this.manager.CloseUnityProcess(unityProcessInfo);
                 this.UpdateListView();
             }
+        }
+
+        void HandleProcessSelect(object sender, UnityProcessInfo unityProcessInfo) {
+            this.manager.SelectUnityProcess(unityProcessInfo);
         }
 
         public void MonitorUnityProcesses(int delay) {

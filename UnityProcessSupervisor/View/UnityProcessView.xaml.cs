@@ -20,14 +20,13 @@ namespace UnityProcessSupervisor.View {
     public partial class UnityProcessView : UserControl {
         public EventHandler<UnityProcessInfo> onRestart = delegate { };
         public EventHandler<UnityProcessInfo> onClose = delegate { };
+        public EventHandler<UnityProcessInfo> onSelect = delegate { };
 
         public UnityProcessView() {
             InitializeComponent();
-            this.restart = (Button)this.FindName("restart");
             this.restart.Click += HandleRestartClick;
-
-            this.close = (Button)this.FindName("close");
             this.close.Click += HandleCloseClick;
+            this.select.Click += HandleSelectClick;
 
             this.projectName = (TextBlock)this.FindName("projectName");
             this.projectPath = (TextBlock)this.FindName("projectPath");
@@ -39,6 +38,10 @@ namespace UnityProcessSupervisor.View {
 
         void HandleCloseClick(object sender, EventArgs e) {
             onClose(sender, processInfo);
+        }
+
+        void HandleSelectClick(object sender, EventArgs e) {
+            onSelect(sender, processInfo);
         }
 
         UnityProcessInfo processInfo;

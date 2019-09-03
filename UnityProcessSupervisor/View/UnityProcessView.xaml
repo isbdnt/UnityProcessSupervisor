@@ -15,7 +15,7 @@
                 </Style>
             </StackPanel.Resources>
             <TextBlock x:Name="projectName" Text="client" FontSize="16" FontWeight="Bold" Foreground="#444" />
-            <TextBlock x:Name="projectPath" Text="C:\Users\ZYQ\Documents\sausage-man\client\Assets\Art\UGUI\InitPage" FontSize="14" Foreground="Gray" />
+            <TextBlock x:Name="projectPath" Text="C:\Users\ZYQ\Documents\sausage-man\client\Assets\Art\UGUI\InitPage" FontSize="14" Foreground="#666" />
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Button}">

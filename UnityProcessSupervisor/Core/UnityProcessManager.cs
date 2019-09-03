@@ -88,6 +88,7 @@ namespace UnityProcessSupervisor {
                                     project = projectInfo,
                                     process = lockers[0]
                                 };
+                                processInfo.project.projectName += $"(PID:{processInfo.process.Id})";
                                 if (processInfo.process.Responding == false) {
                                     processInfo.project.projectName += "(未响应)";
                                 }
